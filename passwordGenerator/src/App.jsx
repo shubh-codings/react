@@ -8,6 +8,7 @@ function App() {
   const [password, setPassword] = useState("")
   //useRef Hook
   const passwordRef = useRef(null)
+  //useCallback Hook
   const passwordGenerator = useCallback(() => {
     let pass = ""
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -24,7 +25,7 @@ function App() {
   const copyPasswordToClipboard = useCallback(()=>{
     passwordRef.current?.select()
     window.navigator.clipboard.writeText(password)},[password])
-
+// useEffect Hook
   useEffect(() => { passwordGenerator() }, [length, numberAllowed, charAllowed, passwordGenerator])
   
 
@@ -38,7 +39,7 @@ function App() {
         </div>
         <div className="input-group mb-3 w-100 d-flex justify-content-between px-4">
           <div>
-            <input className="mx-2 pointer" id='length' type="range" min={8} max={100} value={length} onChange={(e) => { setlength(e.target.value) }} />
+            <input className="mx-2 pointer" id='length' type="range" min={8} max={50} value={length} onChange={(e) => { setlength(e.target.value) }} />
             <label htmlFor="length">Length : {length}</label>
           </div>
           <div>
